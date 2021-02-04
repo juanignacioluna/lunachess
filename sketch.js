@@ -5,7 +5,13 @@ let anchoCasilla = 60
 
 let anchoCanvas = anchoCasilla * 8
 
-function setup() {
+let imgPieza
+
+function preload() {
+	imgPieza = loadImage('reina-negra.png')
+}
+
+function setup(){
 
 	createCanvas(anchoCanvas, anchoCanvas)
 
@@ -19,7 +25,6 @@ function setup() {
 	} 
 
 
-
 	let y = 0
 
 	for (let i = 0; i < 8; i++) { 
@@ -30,7 +35,7 @@ function setup() {
 
 			let claro = ((j+i) % 2 == 0)
 
-			tablero[i][j] = new Casilla(x,y,anchoCasilla, claro)
+			tablero[i][j] = new Casilla(x,y,anchoCasilla,claro, new Pieza(x,y,anchoCasilla/2))
 
 			x+=anchoCasilla
 
@@ -41,20 +46,45 @@ function setup() {
 
 }
 
-function draw() {
+function draw(){
 
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
 
 			tablero[i][j].mostrar()
+			tablero[i][j].pieza.mostrar()
 
 		}
 	}
 
 }
 
+function Pieza(x,y,ancho,tipo,color,fila,columna) {
 
-function Casilla(x,y,ancho, claro){
+	this.ancho = ancho
+
+	this.x = x
+
+	this.y = y
+
+	this.tipo = tipo
+
+	this.color = color
+
+	this.fila = fila
+
+	this.columna = columna
+
+	this.mostrar = () => {
+
+		image(imgPieza, this.x, this.y, this.ancho, this.ancho)
+
+	}
+
+}
+
+
+function Casilla(x,y,ancho,claro,pieza) {
 
 	this.ancho = ancho
 
@@ -63,6 +93,8 @@ function Casilla(x,y,ancho, claro){
 	this.y = y
 
 	this.claro = claro
+
+	this.pieza = pieza
 
 	this.mostrar = () => {
 
