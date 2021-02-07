@@ -10,18 +10,18 @@ let imgAlfilNegro, imgAlfilBlanco, imgReyNegro, imgReyBlanco, imgCaballoNegro, i
 let imgPeonNegro, imgPeonBlanco, imgReinaNegra, imgReinaBlanca, imgTorreNegra, imgTorreBlanca
 
 function preload() {
-	imgAlfilNegro = loadImage('alfil-negro.png')
-	imgAlfilBlanco = loadImage('alfil-blanco.png')
-	imgReyNegro = loadImage('rey-negro.png')
-	imgReyBlanco = loadImage('rey-blanco.png')
-	imgCaballoNegro = loadImage('caballo-negro.png')
-	imgCaballoBlanco = loadImage('caballo-blanco.png')
-	imgPeonNegro = loadImage('peon-negro.png')
-	imgPeonBlanco = loadImage('peon-blanco.png')
-	imgReinaNegra = loadImage('reina-negra.png')
-	imgReinaBlanca = loadImage('reina-blanca.png')
-	imgTorreNegra = loadImage('torre-negra.png')
-	imgTorreBlanca = loadImage('torre-blanca.png')
+	imgAlfilNegro = loadImage('./assets/alfil-negro.png')
+	imgAlfilBlanco = loadImage('./assets/alfil-blanco.png')
+	imgReyNegro = loadImage('./assets/rey-negro.png')
+	imgReyBlanco = loadImage('./assets/rey-blanco.png')
+	imgCaballoNegro = loadImage('./assets/caballo-negro.png')
+	imgCaballoBlanco = loadImage('./assets/caballo-blanco.png')
+	imgPeonNegro = loadImage('./assets/peon-negro.png')
+	imgPeonBlanco = loadImage('./assets/peon-blanco.png')
+	imgReinaNegra = loadImage('./assets/reina-negra.png')
+	imgReinaBlanca = loadImage('./assets/reina-blanca.png')
+	imgTorreNegra = loadImage('./assets/torre-negra.png')
+	imgTorreBlanca = loadImage('./assets/torre-blanca.png')
 }
 
 function setup(){
@@ -128,103 +128,7 @@ function draw(){
 
 }
 
-function Pieza(x,y,ancho,tipo,color,fila,columna) {
-
-	this.ancho = ancho
-
-	this.x = x
-
-	this.y = y
-
-	this.tipo = tipo
-
-	this.color = color
-
-	this.fila = fila
-
-	this.columna = columna
-
-	this.img
-
-	switch (this.tipo) {
-		case 'peon':
-			if(this.color=="blanco"){
-				this.img=imgPeonBlanco
-			}else{
-				this.img=imgPeonNegro
-			}
-			break;
-		case 'torre':
-			if(this.color=="blanco"){
-				this.img=imgTorreBlanca
-			}else{
-				this.img=imgTorreNegra
-			}
-			break;
-		case 'caballo':
-			if(this.color=="blanco"){
-				this.img=imgCaballoBlanco
-			}else{
-				this.img=imgCaballoNegro
-			}
-			break;
-		case 'alfil':
-			if(this.color=="blanco"){
-				this.img=imgAlfilBlanco
-			}else{
-				this.img=imgAlfilNegro
-			}
-			break;
-		case 'reina':
-			if(this.color=="blanco"){
-				this.img=imgReinaBlanca
-			}else{
-				this.img=imgReinaNegra
-			}
-			break;
-		case 'rey':
-			if(this.color=="blanco"){
-				this.img=imgReyBlanco
-			}else{
-				this.img=imgReyNegro
-			}
-			break;
-	}
-
-	this.mostrar = () => {
-
-		image(this.img, this.x, this.y, this.ancho, this.ancho)
-
-	}
-
-}
 
 
-function Casilla(x,y,ancho,claro,pieza) {
-
-	this.ancho = ancho
-
-	this.x = x
-
-	this.y = y
-
-	this.claro = claro
-
-	this.pieza = pieza
-
-	this.mostrar = () => {
-
-		if(this.claro){
-			fill(159, 144, 176)
-		}else{
-			fill(131, 78, 148)
-		}
-
-		noStroke()
-
-		rect(this.x, this.y, this.ancho, this.ancho)	
 
 
-	}
-
-}
